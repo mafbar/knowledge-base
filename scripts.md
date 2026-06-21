@@ -305,3 +305,46 @@ pox - ... → captures pox
 And then, all files starting with john will be put in a folder. Same goes with hoho and pox. This script could probably be modified by an LLM to include (or exclude) all sorts of delimiters.
 
 This script is generated with GTP-5.4 nano through duck.ai.
+
+## Move a content in a folder to the directory directly above it, and delete the folder
+
+The script takes folder names from the command line (you list them as arguments). For each folder, it checks that it actually exists and is a directory. Then it moves every item inside that folder into your current working directory (the directory where you run the script), leaving the original folder name behind. Finally, it tries to delete the now-empty folder; if the folder isn’t empty or can’t be removed, it quietly leaves it.
+
+```python
+from pathlib import Path
+import shutil
+import sys
+
+def move_folder_contents(folder: Path, dst_dir: Path):
+    if not folder.exists() or not folder.is_dir():
+        print(f"Skipping (not a folder): {folder}")
+        return
+
+    # Move everything inside the folder (not the folder itself)
+    for item in folder.iterdir():
+        target = dst_dir / item.name
+        if target.exists():
+            print(f"Skipping (already exists): {target}")
+            continue
+        shutil.move(str(item), str(target))
+    # Optional: remove the now-empty folder
+    try:
+        folder.rmdir()
+    except OSError:
+        pass
+
+def main():
+    dst_dir = Path.cwd()
+
+    if len(sys.argv) < 2:
+        print("Usage: python script.py folder1 folder2 ...")
+        sys.exit(1)
+
+    for arg in sys.argv[1:]:
+        move_folder_contents(Path(arg), dst_dir)
+
+if __name__ == "__main__":
+    main()
+```
+
+This script is generated with GTP-5.4 nano through duck.ai.
