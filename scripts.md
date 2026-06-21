@@ -56,6 +56,36 @@ with open('extracted_links_with_context.tsv', 'w', encoding='utf-8-sig', newline
 print(f"Done! Saved {len(rows)} links to 'extracted_links_with_context.tsv'.")
 ```
 7. It will create a file named extracted_links_with_context.tsv (or you can name it whatever you wish).
-8. I then pasted the content of this file to any spreadsheet program, like Google Sheets or Microsoft Excel or LibreOffice Calc. 
+8. I then pasted the content of this file to any spreadsheet program, like Google Sheets or Microsoft Excel or LibreOffice Calc.
 
-Link to my chat with Gemini: https://gemini.google.com/share/5a38de00965a
+## Delete files with a particular string in a directory (Python)
+
+This script will delete all files in a directory containing a particular string.
+
+```python
+import os
+import argparse  # 1. Import argparse
+
+def delete_files_with_string(directory, search_string):
+    for filename in os.listdir(directory):
+        if search_string in filename:
+            file_path = os.path.join(directory, filename)
+            os.remove(file_path)
+
+if __name__ == "__main__":
+    # 2. Set up the argument parser
+    parser = argparse.ArgumentParser(description="Delete files containing a specific string.")
+    
+    # 3. Define the argument you want to accept
+    parser.add_argument("search_string", type=str, help="The string to look for in filenames")
+
+    # 4. Parse the arguments
+    args = parser.parse_args()
+
+    directory = "."  
+    
+    # 5. Use the argument via args.search_string
+    delete_files_with_string(directory, args.search_string)
+```
+
+Normally people would use Bash or PowerShell for such tasks, and I personally believe that approach to be superior, but for something quick and dirty with little to no vision of extensibility, you can use Python as an OS management tool. Also, this came from an inferior script that I used, which had no ability to receive arguments in the terminal.
