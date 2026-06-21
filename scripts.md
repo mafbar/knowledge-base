@@ -1,6 +1,6 @@
 # Scripts and Code Snippets
 
-This is a collection of short guides involving scripts or code snippets that have helped me with one or very few tasks. It is random as of now.
+This is a collection of short guides involving scripts or code snippets that have helped me with one or very few tasks. It is random as of now. I should probably clarify right off the bat that most, if not all, of these scripts or code snippets are written by AI. As of creating this guide (21 June 2026), AI has become highly competent at writing simple, one-off helper functions or scripts.
 
 ## Parsing Links from a Telegram Chat
 
