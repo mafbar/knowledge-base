@@ -298,9 +298,9 @@ if __name__ == "__main__":
 ```
 So if I have lots of files starting with john, hoho, and pox, it will go like so:
 
-john - nature 1... → captures john
-hoho - trip 3 → captures hoho
-pox - ... → captures pox
+- john - nature 1... → captures john
+- hoho - trip 3 → captures hoho
+- pox - ... → captures pox
 
 And then, all files starting with john will be put in a folder. Same goes with hoho and pox. This script could probably be modified by an LLM to include (or exclude) all sorts of delimiters.
 
