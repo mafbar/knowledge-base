@@ -57,3 +57,5 @@ print(f"Done! Saved {len(rows)} links to 'extracted_links_with_context.tsv'.")
 ```
 7. It will create a file named extracted_links_with_context.tsv (or you can name it whatever you wish).
 8. I then pasted the content of this file to any spreadsheet program, like Google Sheets or Microsoft Excel or LibreOffice Calc. 
+
+Link to my chat with Gemini: https://gemini.google.com/share/5a38de00965a
